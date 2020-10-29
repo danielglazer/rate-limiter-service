@@ -1,3 +1,29 @@
+This repo was created as a small exercise for myself to implement simple web service that will help servers to rate limit requests.
+
+The configuration of the properties of the Rate Limiter are:
+1.requestRate : how many requests can be sent within the interval
+2.interval : in ms within which requestRate will be measured
+
+You can also adjust the port on which this server is listenning.
+
+Exposed endpoint to report URL visit in the following format:
+example(input):
+POST /report
+Content-Type: application/json
+{
+  "url" : "http://www.test.com"
+}
+
+The response of this API should be “ allow ” boolean flag indicating if the request was allowed or not:
+example(output):
+{
+  "allow" : false
+}
+
+
+I will not use any other library for the rate-limiting itself,
+and to make the request handaling I will not use external DBs / persistent storage so we have very little latency. 
+
 
 How to run:
 * Please make sure you have the latest Node version install on your machine
