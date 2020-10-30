@@ -1,5 +1,6 @@
+# Rate limiter service
 This repo was created as a small exercise for myself to implement simple web service that will help servers to rate limit requests.
-
+## Idea
 The configuration of the properties of the Rate Limiter are:
 1.requestRate : how many requests can be sent within the interval
 2.interval : in ms within which requestRate will be measured
@@ -7,33 +8,25 @@ The configuration of the properties of the Rate Limiter are:
 You can also adjust the port on which this server is listenning.
 
 Exposed endpoint to report URL visit in the following format:
-example(input):
+```
+//example(input):
 POST /report
 Content-Type: application/json
 {
   "url" : "http://www.test.com"
 }
-
+```
 The response of this API should be “ allow ” boolean flag indicating if the request was allowed or not:
-example(output):
+```
+//example(output):
 {
   "allow" : false
 }
+```
 
-
+## Design
 I will not use any other library for the rate-limiting itself,
-and to make the request handaling I will not use external DBs / persistent storage so we have very little latency. 
-
-
-How to run:
-* Please make sure you have the latest Node version install on your machine
-* You can change the enviroment variables as needed. They can be found in the .env file 
-
-In the project cmd run:
-- npm i 
-- running on dev: 'npm run dev'
-- running on prod: 'npm run prod'
-
+and to make the request handaling I will not use external DBs / persistent storage so we have very little latency.
 
 
 Node
@@ -44,3 +37,17 @@ Node
 - I did thought about using the async-lock package but as specified there - Nodejs is single threaded,
   and the code execution never gets interrupted inside an event loop,
   so locking is unnecessary ONLY IF our critical section of code can be executed inside a single event loop. 
+
+## Local installation and running
+
+* Please make sure you have the latest Node version install on your machine
+* You can change the enviroment variables as needed. They can be found in the .env file 
+```
+//In the project root folder run via cmd:
+- npm i 
+- running on dev: 'npm run dev'
+- running on prod: 'npm run prod'
+```
+
+## Deployment(with docker)
+on construction...
