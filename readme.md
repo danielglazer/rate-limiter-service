@@ -50,4 +50,13 @@ Node
 ```
 
 ## Deployment(with docker)
-on construction...
+Pull the docker image from docker-hub registry: 
+- docker pull danielglazer/rate-limiter-service:latest
+Run the image in a container:
+- docker run -p 3000:3000 44114677f8c1
+
+### Building the image locally
+Alternativlly you can build the image yourself:
+- docker build -t danielglazer/rate-limiter-service:latest .             
+then run:
+- docker run -p 3000:3000 44114677f8c1
