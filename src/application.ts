@@ -33,7 +33,7 @@ export default class Application {
 		this._server = express();
 		this.addMiddlewares();
 		this.configEnvirometVariables();
-		this.resetCouter();
+		this._counter = new Map();
 	}
 
 	private addMiddlewares() {
@@ -54,7 +54,7 @@ export default class Application {
 	}
 
 	public resetCouter() {
-		this._counter = new Map();
+		Application.getInstance()._counter?.clear();
 	}
 
 	public static getInstance(): Application {
